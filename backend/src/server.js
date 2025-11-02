@@ -52,7 +52,8 @@ const limiter = rateLimit({
   max: 1000,
   message: 'Demasiadas peticiones desde esta IP, intenta de nuevo más tarde'
 });
-app.use('/api', limiter);
+// COMENTADO POR AHORA (descomenta después en producción)
+// app.use('/api', limiter);
 
 // ========================================
 // 6. BODY PARSERS

@@ -1,0 +1,361 @@
+.products-page {
+  padding: 4rem 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  position: relative;
+}
+
+.products-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.products-page h1 {
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.4));
+}
+
+.products-page h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffd700, #d4af37, #ffd700, transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+.products-page h1::before {
+  content: "◆";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -12px;
+  color: #d4af37;
+  font-size: 1rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Agregando layout de dos columnas para sidebar y productos */
+.products-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.products-main {
+  min-width: 0;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Search Bar Luxury */
+.search-bar {
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.search-input-group {
+  position: relative;
+  flex: 1;
+  max-width: 800px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1.4rem 4.5rem 1.4rem 2rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 2px solid #d4af37;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  font-weight: 500;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  background: linear-gradient(135deg, #1f1f1f 0%, #141414 100%);
+}
+
+.search-input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+.search-button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #b8860b 100%);
+  color: #000;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.search-button:hover::before {
+  left: 100%;
+}
+
+.search-button:hover {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.search-button:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* Controls Luxury */
+.products-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.products-controls::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.products-count {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.products-count span {
+  color: #ffd700;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.sort-select {
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  color: #ffd700;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffd700' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 175, 55, 0.2);
+}
+
+.sort-select:hover {
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+}
+
+/* Loading & No Products Luxury */
+.loading,
+.no-products {
+  text-align: center;
+  padding: 6rem 3rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  position: relative;
+}
+
+.no-products-icon {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+  opacity: 0.4;
+  filter: grayscale(1) brightness(0.8);
+}
+
+.no-products h2 {
+  color: #ffd700;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.no-products p {
+  color: #aaa;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Pagination Luxury */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.page-button {
+  padding: 0.8rem 1.6rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 2px solid #d4af37;
+  color: #ffd700;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.page-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+  border-color: #ffd700;
+}
+
+.page-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: #555;
+  color: #555;
+}
+
+.page-info {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  /* En móvil, cambiar a una sola columna */
+  .products-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .products-controls {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-page h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-input-group {
+    max-width: 100%;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .products-controls {
+    padding: 1.5rem;
+  }
+}

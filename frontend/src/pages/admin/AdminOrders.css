@@ -1,0 +1,347 @@
+/* Transformando órdenes admin a estilo lujoso con dorado y negro */
+.admin-orders {
+  padding: 2rem 0;
+}
+
+.admin-orders h1 {
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Filtros */
+.orders-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.orders-filters button {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  color: #b8b8b8;
+  font-weight: 500;
+}
+
+.orders-filters button:hover {
+  border-color: #d4af37;
+  color: #f4d03f;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.orders-filters button.active {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+  color: #0a0a0a;
+  border-color: #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  font-weight: 600;
+}
+
+/* Lista de pedidos */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.no-orders {
+  text-align: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-radius: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  color: #888;
+}
+
+.order-admin-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-radius: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.order-admin-card:hover {
+  transform: translateY(-2px);
+  border-color: #d4af37;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+/* Header del pedido */
+.order-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.order-admin-header h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+  color: #f4d03f;
+  font-weight: 600;
+}
+
+.order-date {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 1px solid;
+}
+
+/* Info del cliente */
+.order-customer-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-group strong {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-group span {
+  color: #f4d03f;
+  font-weight: 500;
+}
+
+/* Dirección */
+.order-address {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.order-address strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-address p {
+  margin: 0;
+  color: #b8b8b8;
+  line-height: 1.6;
+}
+
+.order-notes {
+  margin-top: 0.5rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Productos */
+.order-admin-items {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.order-admin-items > strong {
+  display: block;
+  margin-bottom: 1rem;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-admin-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  margin-bottom: 0.5rem;
+  color: #b8b8b8;
+  transition: all 0.3s ease;
+}
+
+.order-admin-item:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.order-admin-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+.order-admin-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.15) 100%);
+}
+
+.order-total-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.order-total-admin strong {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.order-actions-admin {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-actions-admin label {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.status-select {
+  padding: 0.5rem;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: #0a0a0a;
+  color: #f4d03f;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.status-select:hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .order-customer-info {
+    grid-template-columns: 1fr;
+  }
+
+  .order-admin-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .order-actions-admin {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-select {
+    width: 100%;
+  }
+}
+
+/* Botón eliminar en header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-delete-order {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+.btn-delete-order:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+  filter: drop-shadow(0 0 8px rgba(220, 53, 69, 0.5));
+}
+
+.btn-delete-order:active {
+  transform: translateY(0);
+}
+
+/* Ajustar header para acomodar el botón */
+.order-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Responsive para el botón */
+@media (max-width: 768px) {
+  .header-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-delete-order {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+  }
+}

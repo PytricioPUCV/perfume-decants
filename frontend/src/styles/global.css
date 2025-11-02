@@ -1,0 +1,48 @@
+:root {
+  --gold: #d4af37;
+  --gold-light: #f8e08e;
+  --black: #0a0a0a;
+  --gray-dark: #1a1a1a;
+  --gray: #2a2a2a;
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  color: var(--black);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  padding: 0.75rem 2rem;
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--black);
+}

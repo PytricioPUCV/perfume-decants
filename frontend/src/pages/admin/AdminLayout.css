@@ -1,0 +1,109 @@
+/* Transformando layout admin a estilo lujoso con dorado y negro */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.admin-sidebar {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-right: 2px solid #d4af37;
+  padding: 2rem 0;
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+  box-shadow: 4px 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.admin-sidebar h2 {
+  padding: 0 1.5rem;
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-nav a {
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #b8b8b8;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-nav a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  transition: width 0.3s ease;
+}
+
+.admin-nav a:hover {
+  background: rgba(212, 175, 55, 0.05);
+  color: #f4d03f;
+  border-left-color: #d4af37;
+}
+
+.admin-nav a:hover::before {
+  width: 100%;
+}
+
+.admin-nav a.active {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+  color: #f4d03f;
+  border-left-color: #d4af37;
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+  font-weight: 600;
+}
+
+.admin-main {
+  padding: 2rem;
+  background: #0a0a0a;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    position: static;
+    border-right: none;
+    border-bottom: 2px solid #d4af37;
+  }
+
+  .admin-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .admin-nav a {
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .admin-nav a.active {
+    border-left-color: transparent;
+    border-bottom-color: #d4af37;
+  }
+}

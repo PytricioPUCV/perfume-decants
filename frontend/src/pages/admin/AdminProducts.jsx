@@ -63,7 +63,7 @@ const AdminProducts = () => {
         precio: '',
         stock: '',
         volumen: '5ml',
-        categoria: 'fresco',
+        categoria: '',
         genero: 'unisex',
       });
     }
@@ -82,7 +82,7 @@ const AdminProducts = () => {
       precio: '',
       stock: '',
       volumen: '5ml',
-      categoria: 'fresco',
+      categoria: '',
       genero: 'unisex',
     });
     setImages([]);
@@ -385,20 +385,18 @@ const AdminProducts = () => {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label>Categoría *</label>
+                  <label>Categoría (Estación) *</label>
                   <select
                     name="categoria"
                     className="input"
                     value={formData.categoria}
                     onChange={handleChange}
                   >
-                    <option value="fresco">Fresco</option>
-                    <option value="amaderado">Amaderado</option>
-                    <option value="floral">Floral</option>
-                    <option value="oriental">Oriental</option>
-                    <option value="cítrico">Cítrico</option>
-                    <option value="especiado">Especiado</option>
-                    <option value="gourmand">Gourmand</option>
+                    <option value="">Selecciona una estación</option>
+                    <option value="verano">Verano</option>
+                    <option value="invierno">Invierno</option>
+                    <option value="otoño">Otoño</option>
+                    <option value="primavera">Primavera</option>
                   </select>
                 </div>
 

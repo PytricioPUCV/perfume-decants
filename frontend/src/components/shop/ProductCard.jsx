@@ -11,30 +11,30 @@ const ProductCard = ({ product }) => {
     }).format(price);
   };
 
+  // ✅ CORRECCIÓN: Usar directamente la URL de Cloudinary
+  const imagenUrl = imagenes && imagenes.length > 0
+    ? imagenes[0]  // URL completa de Cloudinary
+    : 'https://via.placeholder.com/500x500?text=Sin+Imagen';
+
   return (
     <Link to={`/productos/${_id}`} className="product-card">
-      <div className="product-image">
-        {imagenes && imagenes.length > 0 ? (
-          <img
-            src={`http://localhost:5000${imagenes[0]}`}
-            alt={nombre}
-            onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/300x300?text=Sin+Imagen';
-            }}
-          />
-        ) : (
-          <div className="no-image">Sin imagen</div>
-        )}
-        {stock <= 0 && <div className="out-of-stock-badge">Agotado</div>}
+      <div className="product-image-container">
+        <img 
+          src={imagenUrl} 
+          alt={nombre} 
+          className="product-image"
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/500x500?text=Error+al+Cargar';
+          }}
+        />
       </div>
-
       <div className="product-info">
-        <p className="product-brand">{marca}</p>
         <h3 className="product-name">{nombre}</h3>
+        <p className="product-brand">{marca}</p>
         <p className="product-volume">{volumen}</p>
         <p className="product-price">{formatPrice(precio)}</p>
         {stock > 0 && stock <= 5 && (
-          <p className="low-stock">¡Solo quedan {stock}!</p>
+          <p className="product-low-stock">¡Solo quedan {stock}!</p>
         )}
       </div>
     </Link>

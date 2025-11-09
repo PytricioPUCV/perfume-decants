@@ -1,7 +1,8 @@
 import Product from '../models/Product.js';
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Product from '../models/Product.js';
+import { cloudinary } from '../config/cloudinary.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -128,11 +129,11 @@ export const crearProducto = async (req, res) => {
       return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
-    // Procesar imágenes (opcional)
+    // Procesar imágenes de Cloudinary
     const imagenes = [];
     if (req.files && req.files.length > 0) {
-      imagenes.push(...req.files.map(file => `/uploads/products/${file.filename}`));
-      console.log(`✅ ${req.files.length} imagen(es) procesada(s)`);
+      imagenes.push(...req.files.map(file => file.path)); // Cloudinary devuelve la URL completa en file.path
+      console.log(`✅ ${req.files.length} imagen(es) subida(s) a Cloudinary`);
     } else {
       console.log('⚠️ Producto creado sin imágenes');
     }
@@ -187,7 +188,7 @@ export const actualizarProducto = async (req, res) => {
 
     // Si hay nuevas imágenes, agregarlas
     if (req.files && req.files.length > 0) {
-      const nuevasImagenes = req.files.map(file => `/uploads/products/${file.filename}`);
+      const nuevasImagenes = req.files.map(file => file.path); // URL de Cloudinary
       producto.imagenes = [...producto.imagenes, ...nuevasImagenes];
     }
 
@@ -219,11 +220,15 @@ export const eliminarProducto = async (req, res) => {
       return res.status(404).json({ error: 'Producto no encontrado' });
     }
 
-    // Eliminar imágenes del servidor
-    producto.imagenes.forEach(imagenPath => {
-      const fullPath = path.join(__dirname, '../../', imagenPath);
-      if (fs.existsSync(fullPath)) {
-        fs.unlinkSync(fullPath);
+    // Eliminar imágenes de Cloudinary
+    producto.imagenes.forEach(async (imagenUrl) => {
+      try {
+        // Extraer public_id de la URL de Cloudinary
+        const publicId = imagenUrl.split('/').slice(-2).join('/').split('.')[0];
+        await cloudinary.uploader.destroy(`perfume-decants/products/${publicId}`);
+        console.log('✅ Imagen eliminada de Cloudinary:', publicId);
+      } catch (error) {
+        console.error('⚠️ Error al eliminar imagen de Cloudinary:', error.message);
       }
     });
 
@@ -273,15 +278,15 @@ export const eliminarImagenProducto = async (req, res) => {
     const imagenUrl = producto.imagenes[imagenIndex];
     console.log('📸 Eliminando:', imagenUrl);
 
-    // Eliminar el archivo físico del servidor
-    const fullPath = path.join(__dirname, '../../', imagenUrl);
-    
-    if (fs.existsSync(fullPath)) {
-      fs.unlinkSync(fullPath);
-      console.log('✅ Archivo físico eliminado');
-    } else {
-      console.log('⚠️ Archivo no encontrado en disco');
+    // Eliminar de Cloudinary
+    try {
+      const publicId = imagenUrl.split('/').slice(-2).join('/').split('.')[0];
+      await cloudinary.uploader.destroy(`perfume-decants/products/${publicId}`);
+      console.log('✅ Imagen eliminada de Cloudinary');
+    } catch (error) {
+      console.log('⚠️ Error al eliminar de Cloudinary:', error.message);
     }
+
 
     // Eliminar del array
     producto.imagenes.splice(imagenIndex, 1);

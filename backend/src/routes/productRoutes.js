@@ -9,7 +9,7 @@ import {
   actualizarStock
 } from '../controllers/productController.js';
 import { proteger, admin } from '../middleware/authMiddleware.js';
-import upload from '../config/multer.js';
+import { upload } from '../config/cloudinary.js';
 
 const router = express.Router();
 

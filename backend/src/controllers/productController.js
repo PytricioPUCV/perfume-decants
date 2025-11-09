@@ -1,4 +1,3 @@
-import Product from '../models/Product.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Product from '../models/Product.js';

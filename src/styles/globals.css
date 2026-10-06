@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #1a1a1a;
+  --color-card: #2a2a2a;
+  --color-line: #3b3b3b;
+  --color-paper: #f5f5f5;
+  --color-muted: #a8a8a8;
+  --color-gold: #d4af37;
+  --color-gold-deep: #c19a1a;
+  --color-wa: #10b981;
+  --color-wa-deep: #0e9f6e;
+  --color-danger: #f08a7e;
+
+  /* Campaña Cyber: solo para marcas de descuento, se puede quitar al terminar la oferta */
+  --color-cyber: #5048e5;
+  --color-cyber-soft: #aeabff;
+
+  /* Estaciones: tonos apagados para que convivan con el oro */
+  --color-verano: #7cc4d6;
+  --color-primavera: #a7c98f;
+  --color-otono: #d49a5e;
+  --color-invierno: #a9b4e0;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+}
+
+/* El único movimiento automático de la página: los atomizadores del hero se posan en la repisa al cargar */
+@keyframes vial-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vial-rise {
+  animation: vial-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cart-bump {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+}
+
+.cart-bump {
+  animation: cart-bump 0.35s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
